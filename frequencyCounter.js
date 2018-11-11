@@ -29,18 +29,22 @@ function same(arr1, arr2) {
   }
   let frequencyCounter1 = {};
   let frequencyCounter2 = {};
+
+  //get count of each element in respective array
   for (let val of arr1) {
     frequencyCounter1[val] = (frequencyCounter1[val] || 0) + 1;
   }
   for (let val of arr2) {
     frequencyCounter2[val] = (frequencyCounter2[val] || 0) + 1;
   }
-  console.log(frequencyCounter1);
-  console.log(frequencyCounter2);
+
   for (let key in frequencyCounter1) {
+    //check if the square of key exists in other array
     if (!(key ** 2 in frequencyCounter2)) {
       return false;
     }
+
+    //check if any extra value in second array
     if (frequencyCounter2[key ** 2] !== frequencyCounter1[key]) {
       return false;
     }
